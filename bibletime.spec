@@ -1,9 +1,9 @@
-%define letter b
+%define letter %{nil}
 %bcond_with    wizard
 
 Name:           bibletime
-Version:        1.6.3
-Release:        %mkrel 3
+Version:        1.6.4
+Release:        %mkrel 1
 Epoch:          0
 Summary:        Easy to use Bible study tool for KDE
 Icon:           bibletime.xpm
