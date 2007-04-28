@@ -1,4 +1,3 @@
-%define letter %{nil}
 %bcond_with    wizard
 
 Name:           bibletime
@@ -10,7 +9,7 @@ Icon:           bibletime.xpm
 License:        GPL
 Url:            http://www.bibletime.info/
 Group:          Text tools
-Source0:        http://umn.dl.sourceforge.net/sourceforge/bibletime/bibletime-%{version}%{letter}.tar.bz2
+Source0:        http://umn.dl.sourceforge.net/sourceforge/bibletime/bibletime-%{version}.tar.bz2
 BuildRequires:  kdelibs-devel
 BuildRequires:  sword-devel
 BuildRequires:  clucene-devel
@@ -39,8 +38,8 @@ export QTDIR=%{_prefix}/lib/qt3
 %{__mkdir_p} %{buildroot}%{_menudir}
 %{__mkdir_p} %{buildroot}%{_datadir}/config
 
-%{__cat} << EOF > %{buildroot}%{_menudir}/%{name}
-?package(bibletime):command="/usr/bin/%{name}" \
+%{__cat} > %{buildroot}%{_menudir}/%{name} << EOF
+?package(bibletime):command="%{_bindir}/%{name}" \
 icon="%{name}.png" \
 needs="X11" \
 section="More Applications/Editors" \
@@ -70,9 +69,12 @@ EOF
 %{__install} -m 644 bibletime/pics/16x16/hi16-app-bibletime.png %{buildroot}/%{_miconsdir}/%{name}.png
 
 %if %with wizard
-%{__cat} << EOF > %{buildroot}%{_menudir}/%{name}-setup
-?package(bibletime):command="/usr/bin/btsetupwizard" icon="bibletime.png" \
-needs="X11" section="Applications/Text tools/" title="Bibletime Setup Wizard" \
+%{__cat} > %{buildroot}%{_menudir}/%{name}-setup << EOF
+?package(bibletime):command="/usr/bin/btsetupwizard" \
+icon="bibletime.png" \
+needs="X11" \
+section="Applications/Text tools" \
+title="Bibletime Setup Wizard" \
 longtitle="A setup tool for the easy to use Bible study tool" \
 xdg="true"
 EOF
