@@ -5,11 +5,11 @@ Version:        1.6.4
 Release:        %mkrel 1
 Epoch:          0
 Summary:        Easy to use Bible study tool for KDE
-Icon:           bibletime.xpm
 License:        GPL
 Url:            http://www.bibletime.info/
 Group:          Text tools
 Source0:        http://umn.dl.sourceforge.net/sourceforge/bibletime/bibletime-%{version}.tar.bz2
+Source1:        bibletime.xpm
 BuildRequires:  kdelibs-devel
 BuildRequires:  sword-devel
 BuildRequires:  clucene-devel
@@ -25,7 +25,7 @@ texts, write own notes, save, print etc.). Bibletime is a frontend for
 the  SWORD Bible Framework.
 
 %prep
-%setup -q -n %{name}-%{version}%{letter}
+%setup -q
 
 %build
 export QTDIR=%{_prefix}/lib/qt3
