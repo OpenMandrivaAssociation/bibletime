@@ -58,7 +58,6 @@ Icon=%{name}
 Terminal=false
 Type=Application
 Categories=X-MandrivaLinux-MoreApplications-Education-Literature;
-Encoding=UTF-8
 EOF
 
 %{__mkdir_p} %{buildroot}%{_liconsdir}
