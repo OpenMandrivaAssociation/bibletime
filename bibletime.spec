@@ -1,15 +1,16 @@
 %bcond_with    wizard
 
 Name:           bibletime
-Version:        1.6.4
+Version:        1.6.5
 Release:        %mkrel 1
 Epoch:          0
 Summary:        Easy to use Bible study tool for KDE
-License:        GPL
+License:        GPLv2+
 Url:            http://www.bibletime.info/
 Group:          Text tools
-Source0:        http://umn.dl.sourceforge.net/sourceforge/bibletime/bibletime-%{version}.tar.bz2
-Source1:        bibletime.xpm
+Source0:        http://ovh.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
+Source1:	http://ovh.dl.sourceforge.net/sourceforge/%{name}/%{name}-i18n-%{version}.tar.bz2
+Patch0:		bibletime-1.6.5-fix-desktop.patch
 BuildRequires:  kdelibs-devel
 BuildRequires:  sword-devel
 BuildRequires:  clucene-devel
@@ -25,40 +26,27 @@ texts, write own notes, save, print etc.). Bibletime is a frontend for
 the  SWORD Bible Framework.
 
 %prep
-%setup -q
+%setup -q -a 1
+%patch0 -p0
 
 %build
 export QTDIR=%{_prefix}/lib/qt3
 %{configure2_5x} --disable-rpath --disable-debug
 %{make} kde_htmldir=%{_docdir}/HTML/
 
+cd bibletime-i18n-%version
+%configure2_5x
+%make
+
 %install
 %{__rm} -rf %{buildroot}
 %{makeinstall_std} kde_htmldir=%{_docdir}/HTML/
-%{__mkdir_p} %{buildroot}%{_menudir}
-%{__mkdir_p} %{buildroot}%{_datadir}/config
 
-%{__cat} > %{buildroot}%{_menudir}/%{name} << EOF
-?package(bibletime):command="%{_bindir}/%{name}" \
-icon="%{name}.png" \
-needs="X11" \
-section="More Applications/Editors" \
-title="Bibletime" \
-longtitle="An easy to use Bible study tool" \
-xdg="true"
-EOF
+cd bibletime-i18n-%version
+%makeinstall_std
+cd -
 
-%{__mkdir_p} %{buildroot}%{_datadir}/applications
-%{__cat} > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
-[Desktop Entry]
-Name=Bibletime
-Comment=An easy to use Bible study tool
-Exec=%{_bindir}/%{name}
-Icon=%{name}
-Terminal=false
-Type=Application
-Categories=X-MandrivaLinux-MoreApplications-Education-Literature;
-EOF
+rm -fr %buildroot%_includedir
 
 %{__mkdir_p} %{buildroot}%{_liconsdir}
 %{__mkdir_p} %{buildroot}%{_iconsdir}
@@ -67,17 +55,7 @@ EOF
 %{__install} -m 644 bibletime/pics/32x32/hi32-app-bibletime.png %{buildroot}/%{_iconsdir}/%{name}.png
 %{__install} -m 644 bibletime/pics/16x16/hi16-app-bibletime.png %{buildroot}/%{_miconsdir}/%{name}.png
 
-%if %with wizard
-%{__cat} > %{buildroot}%{_menudir}/%{name}-setup << EOF
-?package(bibletime):command="/usr/bin/btsetupwizard" \
-icon="bibletime.png" \
-needs="X11" \
-section="Applications/Text tools" \
-title="Bibletime Setup Wizard" \
-longtitle="A setup tool for the easy to use Bible study tool" \
-xdg="true"
-EOF
-%endif
+%find_lang %name  --with-html
 
 %clean
 %{__rm} -rf %{buildroot}
@@ -88,7 +66,7 @@ EOF
 %postun
 %{clean_menus}
 
-%files
+%files -f %name.lang
 %defattr(-,root,root)
 %doc ChangeLog INSTALL LICENSE README
 %if %with wizard
@@ -98,11 +76,6 @@ EOF
 %{_datadir}/apps/bibletime
 %{_datadir}/icons/*/*/*/*.png
 %{_datadir}/applications/*.desktop
-%{_docdir}/HTML
-%exclude %{_includedir}
-%{_menudir}/%{name}
 %{_iconsdir}/%{name}.png
 %{_miconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
-
-
