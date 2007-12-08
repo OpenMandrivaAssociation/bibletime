@@ -52,7 +52,7 @@ the  SWORD Bible Framework.
 %build
 export QTDIR=%{_prefix}/lib/qt3
 %{configure2_5x} --disable-rpath --disable-debug
-%{make} kde_htmldir=%{_docdir}/HTML/
+make kde_htmldir=%{_docdir}/HTML/
 
 cd bibletime-i18n-%version
 %configure2_5x
