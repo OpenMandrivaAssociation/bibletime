@@ -43,7 +43,7 @@ BibleTime is a free and easy to use bible study tool for UNIX systems.
 BibleTime provides easy handling of digitized texts (Bibles, commentaries 
 and lexicons) and powerful features to work with these texts (search in 
 texts, write own notes, save, print etc.). Bibletime is a frontend for 
-the  SWORD Bible Framework.
+the SWORD Bible Framework.
 
 %prep
 %setup -q -a 1
