@@ -15,6 +15,7 @@ BuildRequires:  kdelibs-devel
 BuildRequires:  sword-devel
 BuildRequires:  clucene-devel
 Requires:       sword
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Obsoletes:	bibletime-i18n
 Obsoletes:	bibletime-i18n-af
 Obsoletes:	bibletime-i18n-de
