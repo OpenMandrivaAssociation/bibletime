@@ -2,7 +2,7 @@
 
 Name:           bibletime
 Version:        1.6.5
-Release:        %mkrel 1
+Release:        %mkrel 2
 Epoch:          0
 Summary:        Easy to use Bible study tool for KDE
 License:        GPLv2+
