@@ -65,7 +65,7 @@ desktop-file-install --vendor='' \
 	--remove-key='X-KDE-Username' \
 	--remove-category="QT" \
 	--add-category="Qt" \
-	%buildroot%_datadir/applications.desktop
+	%buildroot%_datadir/applications/*.desktop
 
 %clean
 %{__rm} -rf %{buildroot}
