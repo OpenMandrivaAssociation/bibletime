@@ -1,20 +1,20 @@
-%bcond_with    wizard
+%define betaver beta3
 
 Name:           bibletime
-Version:        1.6.5.1
-Release:        %mkrel 1
+Version:        1.7
+Release:        %mkrel -c %betaver 1
 Epoch:          0
 Summary:        Easy to use Bible study tool for KDE
 License:        GPLv2+
 Url:            http://www.bibletime.info/
 Group:          Text tools
-Source0:        http://ovh.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
-Source1:	http://ovh.dl.sourceforge.net/sourceforge/%{name}/%{name}-i18n-1.6.5.tar.bz2
-Patch0:		bibletime-1.6.5-fix-desktop.patch
-BuildRequires:  kdelibs-devel
-BuildRequires:  sword-devel
-BuildRequires:  clucene-devel
-Requires:       sword
+Source0:        http://ovh.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.%{betaver}.tar.bz2
+BuildRequires:  kdelibs4-devel
+BuildRequires:	boost-devel
+BuildRequires:  sword-devel >= 1.5.9
+BuildRequires:  clucene-devel >= 0.9.16a
+BuildRequires:	desktop-file-utils
+Requires:       sword >= 1.5.9
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Obsoletes:	bibletime-i18n
 Obsoletes:	bibletime-i18n-af
@@ -46,29 +46,26 @@ texts, write own notes, save, print etc.). Bibletime is a frontend for
 the SWORD Bible Framework.
 
 %prep
-%setup -q -a 1
-#%patch0 -p0
+%setup -q -n %name-%version.%betaver
 
 %build
-%configure_kde3
+%cmake_kde4
 %make
-
-cd bibletime-i18n-1.6.5
-%configure_kde3
-%make
-cd -
 
 %install
 %{__rm} -rf %{buildroot}
-%{makeinstall_std}
+%{makeinstall_std} -C build
 
-cd bibletime-i18n-1.6.5
-%makeinstall_std
-cd -
-
-rm -fr %buildroot%_kde3_includedir
-
-%find_lang %name  --with-html
+desktop-file-install --vendor='' \
+	--dir=%buildroot%_datadir/applications \
+	--remove-key='MimeType' \
+	--remove-key='SwallowExec' \
+	--remove-key='SwallowTitle' \
+	--remove-key='TerminalOptions' \
+	--remove-key='X-KDE-Username' \
+	--remove-category="QT" \
+	--add-category="Qt" \
+	%buildroot%_datadir/applications.desktop
 
 %clean
 %{__rm} -rf %{buildroot}
@@ -83,13 +80,10 @@ rm -fr %buildroot%_kde3_includedir
 %{clean_menus}
 %endif
 
-%files -f %name.lang
+%files
 %defattr(-,root,root)
-%doc ChangeLog INSTALL LICENSE README
-%if %with wizard
-%{_kde3_bindir}/btsetupwizard
-%endif
-%{_kde3_bindir}/bibletime
-%{_kde3_datadir}/apps/bibletime
-%{_kde3_datadir}/icons/*/*/*/*.png
-%{_kde3_datadir}/applications/*.desktop
+%doc ChangeLog LICENSE README
+%{_kde_bindir}/bibletime
+%{_kde_datadir}/bibletime
+%{_kde_datadir}/icons/*
+%{_kde_datadir}/applications/*.desktop
