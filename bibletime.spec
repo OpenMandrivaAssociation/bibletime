@@ -1,14 +1,14 @@
-%define betaver beta3
+#define betaver beta3
 
 Name:           bibletime
 Version:        1.7
-Release:        %mkrel -c %betaver 1
+Release:        %mkrel 1
 Epoch:          0
 Summary:        Easy to use Bible study tool for KDE
 License:        GPLv2+
 Url:            http://www.bibletime.info/
 Group:          Text tools
-Source0:        http://ovh.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.%{betaver}.tar.bz2
+Source0:        http://ovh.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.gz
 BuildRequires:  kdelibs4-devel
 BuildRequires:	boost-devel
 BuildRequires:  sword-devel >= 1.5.9
@@ -46,7 +46,7 @@ texts, write own notes, save, print etc.). Bibletime is a frontend for
 the SWORD Bible Framework.
 
 %prep
-%setup -q -n %name-%version.%betaver
+%setup -q
 
 %build
 %cmake_kde4
