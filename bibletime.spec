@@ -1,7 +1,7 @@
 #define betaver beta3
 
 Name:           bibletime
-Version:        2.0.1
+Version:        2.2
 Release:        %mkrel 1
 Epoch:          0
 Summary:        Easy to use Bible study tool for KDE
