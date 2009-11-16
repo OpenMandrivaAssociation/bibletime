@@ -1,10 +1,10 @@
 #define betaver beta3
 
 Name:           bibletime
-Version:        2.3
+Version:        2.3.3
 Release:        %mkrel 1
 Epoch:          0
-Summary:        Easy to use Bible study tool for KDE
+Summary:        Easy to use Bible study tool
 License:        GPLv2+
 Url:            http://www.bibletime.info/
 Group:          Text tools
@@ -38,7 +38,7 @@ Obsoletes:	bibletime-i18n-pt_br
 Obsoletes:	bibletime-i18n-sk
 
 %description
-BibleTime is a free and easy to use bible study tool for UNIX systems.
+BibleTime is a free and easy to use bible study tool built with QT4.
 
 BibleTime provides easy handling of digitized texts (Bibles, commentaries 
 and lexicons) and powerful features to work with these texts (search in 
