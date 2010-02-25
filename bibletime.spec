@@ -9,7 +9,7 @@ Group:          Text tools
 Source0:        http://ovh.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.gz
 BuildRequires:  kdelibs4-devel
 BuildRequires:	boost-devel
-BuildRequires:  sword-devel >= 1.5.9
+BuildRequires:  sword-devel >= 1.6.0
 BuildRequires:  clucene-devel >= 0.9.16a
 BuildRequires:	desktop-file-utils
 Requires:       sword >= 1.5.9
