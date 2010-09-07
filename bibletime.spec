@@ -1,18 +1,19 @@
 Name:           bibletime
-Version:        2.6
+Version:        2.7.3
 Release:        %mkrel 1
 Epoch:          0
 Summary:        Easy to use Bible study tool
 License:        GPLv2+
 Url:            http://www.bibletime.info/
 Group:          Text tools
-Source0:        http://ovh.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.gz
-BuildRequires:  kdelibs4-devel
-BuildRequires:	boost-devel
+Source0:        http://ovh.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
+BuildRequires:  qt4-devel
 BuildRequires:  sword-devel >= 1.6.0
+BuildRequires:	boost-devel
 BuildRequires:  clucene-devel >= 0.9.16a
 BuildRequires:	desktop-file-utils
-Requires:       sword >= 1.5.9
+BuildRequires:	cmake
+Requires:       sword >= 1.6.0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Obsoletes:	bibletime-i18n
 Obsoletes:	bibletime-i18n-af
@@ -47,7 +48,7 @@ the SWORD Bible Framework.
 %setup -q
 
 %build
-%cmake_kde4
+%cmake_qt4
 %make
 
 %install
@@ -56,13 +57,7 @@ the SWORD Bible Framework.
 
 desktop-file-install --vendor='' \
 	--dir=%buildroot%_datadir/applications \
-	--remove-key='MimeType' \
-	--remove-key='SwallowExec' \
-	--remove-key='SwallowTitle' \
-	--remove-key='TerminalOptions' \
-	--remove-key='X-KDE-Username' \
-	--remove-category="QT" \
-	--add-category="Qt" \
+	--add-category="Office" \
 	%buildroot%_datadir/applications/*.desktop
 
 %clean
@@ -81,7 +76,7 @@ desktop-file-install --vendor='' \
 %files
 %defattr(-,root,root)
 %doc ChangeLog LICENSE README
-%{_kde_bindir}/bibletime
-%{_kde_datadir}/bibletime
-%{_kde_datadir}/icons/*
-%{_kde_datadir}/applications/*.desktop
+%{_bindir}/bibletime
+%{_datadir}/bibletime
+%{_datadir}/icons/bibletime.svg
+%{_datadir}/applications/*.desktop
