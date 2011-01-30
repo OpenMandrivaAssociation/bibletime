@@ -1,5 +1,5 @@
 Name:           bibletime
-Version:        2.7.3
+Version:        2.8.1
 Release:        %mkrel 1
 Epoch:          0
 Summary:        Easy to use Bible study tool
