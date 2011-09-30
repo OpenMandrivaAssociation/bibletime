@@ -7,6 +7,8 @@ License:        GPLv2+
 Url:            http://www.bibletime.info/
 Group:          Text tools
 Source0:        http://ovh.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
+Patch0:         bibletime-2.8.2-pointertype.patch
+Patch1:         bibletime-2.8.2-ftbfs.patch
 BuildRequires:  qt4-devel
 BuildRequires:  sword-devel >= 1.6.0
 BuildRequires:	boost-devel
@@ -46,6 +48,8 @@ the SWORD Bible Framework.
 
 %prep
 %setup -q
+%patch0 -p1 -b .pointer
+%patch1 -p1 -b .ftbfs
 
 %build
 %cmake_qt4
