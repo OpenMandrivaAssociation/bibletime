@@ -1,5 +1,5 @@
 Name:           bibletime
-Version:        2.8.1
+Version:        2.8.2
 Release:        %mkrel 1
 Epoch:          0
 Summary:        Easy to use Bible study tool
@@ -56,9 +56,9 @@ the SWORD Bible Framework.
 %{makeinstall_std} -C build
 
 desktop-file-install --vendor='' \
-	--dir=%buildroot%_datadir/applications \
+	--dir=%{buildroot}%{_datadir}/applications \
 	--add-category="Office" \
-	%buildroot%_datadir/applications/*.desktop
+	%{buildroot}%{_datadir}/applications/*.desktop
 
 %clean
 %{__rm} -rf %{buildroot}
