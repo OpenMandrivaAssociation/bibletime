@@ -1,5 +1,5 @@
 Name:		bibletime
-Version:	2.8.4
+Version:	2.9.1
 Release:	%mkrel 1
 Epoch:		0
 Summary:	Easy to use Bible study tool
@@ -7,8 +7,6 @@ License:	GPLv2+
 Url:		http://www.bibletime.info/
 Group:		Text tools
 Source0:	http://ovh.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
-Patch0:		bibletime-2.8.2-pointertype.patch
-Patch1:		bibletime-2.8.2-ftbfs.patch
 BuildRequires:	qt4-devel
 BuildRequires:	sword-devel >= 1.6.0
 BuildRequires:	boost-devel
@@ -16,7 +14,6 @@ BuildRequires:	clucene-devel >= 0.9.16a
 BuildRequires:	desktop-file-utils
 BuildRequires:	cmake
 Requires:	sword >= 1.6.0
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Obsoletes:	bibletime-i18n
 Obsoletes:	bibletime-i18n-af
 Obsoletes:	bibletime-i18n-de
@@ -48,16 +45,14 @@ the SWORD Bible Framework.
 
 %prep
 %setup -q
-%patch0 -p1 -b .pointer
-%patch1 -p1 -b .ftbfs
 
 %build
 %cmake_qt4
 %make
 
 %install
-%{__rm} -rf %{buildroot}
-%{makeinstall_std} -C build
+%__rm -rf %{buildroot}
+%makeinstall_std -C build
 
 desktop-file-install --vendor='' \
 	--dir=%{buildroot}%{_datadir}/applications \
@@ -65,20 +60,9 @@ desktop-file-install --vendor='' \
 	%{buildroot}%{_datadir}/applications/*.desktop
 
 %clean
-%{__rm} -rf %{buildroot}
-
-%if %mdkversion < 200900
-%post
-%{update_menus}
-%endif
-
-%if %mdkversion < 200900
-%postun
-%{clean_menus}
-%endif
+%__rm -rf %{buildroot}
 
 %files
-%defattr(-,root,root)
 %doc ChangeLog LICENSE README
 %{_bindir}/bibletime
 %{_datadir}/bibletime
