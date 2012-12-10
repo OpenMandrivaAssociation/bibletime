@@ -1,17 +1,19 @@
+#define debug_package %{nil}
+%define Werror_cflags %nil
 Name:		bibletime
-Version:	2.9.1
-Release:	%mkrel 1
-Epoch:		0
-Summary:	Easy to use Bible study tool
-License:	GPLv2+
+Version:		2.9.1
+Release:		1
+Summary:		Easy to use Bible study tool
+License:		GPLv2+
 Url:		http://www.bibletime.info/
 Group:		Text tools
-Source0:	http://ovh.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
+Source0:		http://ovh.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
 BuildRequires:	qt4-devel
-BuildRequires:	sword-devel >= 1.6.0
+BuildRequires:	pkgconfig(sword) >= 1.6.0
 BuildRequires:	boost-devel
-BuildRequires:	clucene-devel >= 0.9.16a
+BuildRequires:	pkgconfig(libclucene-core) >= 0.9.16a
 BuildRequires:	desktop-file-utils
+BuildRequires:	kdelibs4-devel
 BuildRequires:	cmake
 Requires:	sword >= 1.6.0
 Obsoletes:	bibletime-i18n
@@ -47,11 +49,10 @@ the SWORD Bible Framework.
 %setup -q
 
 %build
-%cmake_qt4
+%cmake_kde4
 %make
 
 %install
-%__rm -rf %{buildroot}
 %makeinstall_std -C build
 
 desktop-file-install --vendor='' \
@@ -59,8 +60,6 @@ desktop-file-install --vendor='' \
 	--add-category="Office" \
 	%{buildroot}%{_datadir}/applications/*.desktop
 
-%clean
-%__rm -rf %{buildroot}
 
 %files
 %doc ChangeLog LICENSE README
@@ -68,3 +67,6 @@ desktop-file-install --vendor='' \
 %{_datadir}/bibletime
 %{_datadir}/icons/bibletime.svg
 %{_datadir}/applications/*.desktop
+
+
+
