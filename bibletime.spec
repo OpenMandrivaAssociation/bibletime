@@ -2,7 +2,7 @@
 %define Werror_cflags %nil
 Name:		bibletime
 Version:		2.9.2
-Release:		1
+Release:		2
 Summary:		Easy to use Bible study tool
 License:		GPLv2+
 Url:		http://www.bibletime.info/
