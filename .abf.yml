@@ -1,4 +1,5 @@
 removed_sources:
   bibletime-2.9.1.tar.bz2: f00a3a3cfdf011c16ac9d424815f9ee985b539c9
-sources:
   bibletime-2.9.2.tar.bz2: fda08560d1222fd62cfa6c7871ee00ee98e503a1
+sources:
+  bibletime-2.10.0.tar.xz: 95eda0130ba7b273d2b1b8561682870772221902

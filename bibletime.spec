@@ -1,13 +1,13 @@
 #define debug_package %{nil}
 %define Werror_cflags %nil
 Name:		bibletime
-Version:		2.9.2
-Release:		2
+Version:		2.10.0
+Release:		1
 Summary:		Easy to use Bible study tool
 License:		GPLv2+
 Url:		http://www.bibletime.info/
 Group:		Text tools
-Source0:		https://sourceforge.net/projects/bibletime/files/BibleTime%202/BibleTime%202%20source%20code/%{name}-%{version}.tar.bz2
+Source0:		http://sourceforge.net/projects/bibletime/files/BibleTime%202/BibleTime%202%20source%20code/%{name}-%{version}.tar.xz
 BuildRequires:	qt4-devel
 BuildRequires:	pkgconfig(sword) >= 1.6.0
 BuildRequires:	boost-devel
@@ -67,7 +67,3 @@ desktop-file-install --vendor='' \
 %{_datadir}/bibletime
 %{_datadir}/icons/bibletime.svg
 %{_datadir}/applications/*.desktop
-
-
-
-
