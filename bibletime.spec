@@ -1,19 +1,19 @@
 #define debug_package %{nil}
 %define Werror_cflags %nil
 Name:		bibletime
-Version:		2.9.2
-Release:		2
+Version:		2.11.1
+Release:		1
 Summary:		Easy to use Bible study tool
 License:		GPLv2+
 Url:		http://www.bibletime.info/
 Group:		Text tools
-Source0:		https://sourceforge.net/projects/bibletime/files/BibleTime%202/BibleTime%202%20source%20code/%{name}-%{version}.tar.bz2
-BuildRequires:	qt4-devel
+Source0:	https://github.com/bibletime/bibletime/archive/v%{version}.tar.gz
+BuildRequires:	cmake(ECM)
+BuildRequires:	cmake(Qt5Core) cmake(Qt5Gui) cmake(Qt5PrintSupport) cmake(Qt5WebChannel) cmake(Qt5WebEngineCore) cmake(Qt5WebEngineWidgets) cmake(Qt5Widgets) cmake(Qt5Xml)
 BuildRequires:	pkgconfig(sword) >= 1.6.0
 BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(libclucene-core) >= 0.9.16a
 BuildRequires:	desktop-file-utils
-BuildRequires:	kdelibs4-devel
 BuildRequires:	cmake
 Requires:	sword >= 1.6.0
 Obsoletes:	bibletime-i18n
@@ -46,14 +46,14 @@ texts, write own notes, save, print etc.). Bibletime is a frontend for
 the SWORD Bible Framework.
 
 %prep
-%setup -q
+%setup -qn %{name}-%{version}
 
 %build
-%cmake_kde4
-%make
+%cmake_kde5
+%ninja
 
 %install
-%makeinstall_std -C build
+%ninja_install -C build
 
 desktop-file-install --vendor='' \
 	--dir=%{buildroot}%{_datadir}/applications \
@@ -62,7 +62,7 @@ desktop-file-install --vendor='' \
 
 
 %files
-%doc ChangeLog LICENSE README
+%doc ChangeLog LICENSE README.md
 %{_bindir}/bibletime
 %{_datadir}/bibletime
 %{_datadir}/icons/bibletime.svg
