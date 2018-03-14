@@ -9,7 +9,7 @@ Url:		http://www.bibletime.info/
 Group:		Text tools
 Source0:	https://github.com/bibletime/bibletime/archive/v%{version}.tar.gz
 BuildRequires:	cmake(ECM)
-BuildRequires:	cmake(Qt5Core) cmake(Qt5Gui) cmake(Qt5PrintSupport) cmake(Qt5WebChannel) cmake(Qt5WebEngine) cmake(Qt5WebEngineCore) cmake(Qt5WebEngineWidgets) cmake(Qt5Widgets) cmake(Qt5Xml) cmake(Qt5Svg)
+BuildRequires:	cmake(Qt5Core) cmake(Qt5Gui) cmake(Qt5PrintSupport) cmake(Qt5WebChannel) cmake(Qt5WebEngine) cmake(Qt5WebEngineCore) cmake(Qt5WebEngineWidgets) cmake(Qt5Widgets) cmake(Qt5Xml) cmake(Qt5Svg) cmake(Qt5Network) cmake(Qt5Test)
 BuildRequires:	pkgconfig(sword) >= 1.6.0
 BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(libclucene-core) >= 0.9.16a
