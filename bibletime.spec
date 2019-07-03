@@ -65,7 +65,7 @@ desktop-file-install --vendor='' \
 %doc ChangeLog LICENSE README.md
 %{_bindir}/bibletime
 %{_datadir}/bibletime
-%{_datadir}/icons/*.svg
+#{_datadir}/icons/*.svg
 %{_datadir}/applications/*.desktop
 
 
