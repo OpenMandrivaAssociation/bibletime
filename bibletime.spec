@@ -1,13 +1,13 @@
 #define debug_package %{nil}
 %define Werror_cflags %nil
 Name:		bibletime
-Version:		2.11.1
+Version:		2.11.2
 Release:		1
 Summary:		Easy to use Bible study tool
 License:		GPLv2+
 Url:		http://www.bibletime.info/
 Group:		Text tools
-Source0:	https://github.com/bibletime/bibletime/archive/v%{version}.tar.gz
+Source0:	https://github.com/bibletime/bibletime/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(Qt5Core) cmake(Qt5Gui) cmake(Qt5PrintSupport) cmake(Qt5WebChannel) cmake(Qt5WebEngine) cmake(Qt5WebEngineCore) cmake(Qt5WebEngineWidgets) cmake(Qt5Widgets) cmake(Qt5Xml) cmake(Qt5Svg) cmake(Qt5Network) cmake(Qt5Test)
 BuildRequires:	pkgconfig(sword) >= 1.6.0
@@ -65,7 +65,7 @@ desktop-file-install --vendor='' \
 %doc ChangeLog LICENSE README.md
 %{_bindir}/bibletime
 %{_datadir}/bibletime
-%{_datadir}/icons/bibletime.svg
+%{_datadir}/icons/hicolor/scalable/apps/bibletime.svg
 %{_datadir}/applications/*.desktop
 
 
