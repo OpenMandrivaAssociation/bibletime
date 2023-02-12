@@ -1,7 +1,7 @@
 #define debug_package %{nil}
 %define Werror_cflags %nil
 Name:		bibletime
-Version:		2.11.2
+Version:		3.0.3
 Release:		1
 Summary:		Easy to use Bible study tool
 License:		GPLv2+
