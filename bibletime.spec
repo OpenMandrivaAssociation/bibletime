@@ -17,6 +17,7 @@ BuildRequires:	desktop-file-utils
 BuildRequires:	cmake
 BuildRequires:	po4a
 BuildRequires:	xsltproc
+BuildRequires:	docbook-style-xsl
 Requires:	sword >= 1.6.0
 
 %description
