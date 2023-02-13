@@ -15,6 +15,7 @@ BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(libclucene-core) >= 0.9.16a
 BuildRequires:	desktop-file-utils
 BuildRequires:	cmake
+BuildRequires:	po4a
 Requires:	sword >= 1.6.0
 Obsoletes:	bibletime-i18n
 Obsoletes:	bibletime-i18n-af
