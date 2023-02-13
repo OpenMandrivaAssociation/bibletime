@@ -18,26 +18,6 @@ BuildRequires:	cmake
 BuildRequires:	po4a
 BuildRequires:	xsltproc
 Requires:	sword >= 1.6.0
-Obsoletes:	bibletime-i18n
-Obsoletes:	bibletime-i18n-af
-Obsoletes:	bibletime-i18n-de
-Obsoletes:	bibletime-i18n-fi
-Obsoletes:	bibletime-i18n-it
-Obsoletes:	bibletime-i18n-no
-Obsoletes:	bibletime-i18n-ro
-Obsoletes:	bibletime-i18n-ua
-Obsoletes:	bibletime-i18n-bg
-Obsoletes:	bibletime-i18n-en_GB
-Obsoletes:	bibletime-i18n-fr
-Obsoletes:	bibletime-i18n-ko
-Obsoletes:	bibletime-i18n-pl
-Obsoletes:	bibletime-i18n-ru
-Obsoletes:	bibletime-i18n-cs
-Obsoletes:	bibletime-i18n-es
-Obsoletes:	bibletime-i18n-hu
-Obsoletes:	bibletime-i18n-nl
-Obsoletes:	bibletime-i18n-pt_br
-Obsoletes:	bibletime-i18n-sk
 
 %description
 BibleTime is a free and easy to use bible study tool built with QT4.
@@ -51,7 +31,10 @@ the SWORD Bible Framework.
 %setup -qn %{name}-%{version}
 
 %build
-%cmake_kde5
+%cmake_kde5 \
+	     -DBUILD_HANDBOOK_PDF=OFF \
+    	     -DBUILD_HOWTO_PDF=OFF \
+	     -DBUILD_HANDBOOK_HTML=OFF
 %ninja
 
 %install
