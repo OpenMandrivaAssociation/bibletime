@@ -51,7 +51,7 @@ desktop-file-install --vendor='' \
 %doc ChangeLog LICENSE README.md
 %{_bindir}/bibletime
 %{_datadir}/bibletime
-%{_datadir}/icons/hicolor/scalable/apps/bibletime.svg
+#{_datadir}/icons/hicolor/scalable/apps/bibletime.svg
 %{_datadir}/applications/*.desktop
 
 
