@@ -5,7 +5,7 @@ Version:		3.0.3
 Release:		1
 Summary:		Easy to use Bible study tool
 License:		GPLv2+
-Url:		http://www.bibletime.info/
+Url:		https://www.bibletime.info/
 Group:		Text tools
 Source0:	https://github.com/bibletime/bibletime/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:	cmake(ECM)
